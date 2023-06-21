@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>cn.shoxiongdu</groupId>
-    <artifactId>SkyEyeSystem</artifactId>
+    <artifactId>SkyEye</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>SkyEyeSystem</name>
     <description>SkyEyeSystem</description>
