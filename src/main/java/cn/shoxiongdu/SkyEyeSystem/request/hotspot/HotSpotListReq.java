@@ -7,9 +7,10 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class HotSpotListReq extends PageRequest {
+
     private Long startTimestamp;
 
     private Long endTimestamp;
 
-    private int type;
+    private int platform_id;
 }

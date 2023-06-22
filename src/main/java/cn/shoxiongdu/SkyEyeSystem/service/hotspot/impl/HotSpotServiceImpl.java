@@ -29,6 +29,6 @@ public class HotSpotServiceImpl extends ServiceImpl<HotSpotMapper, HotSpot> impl
                 new LambdaQueryWrapper<HotSpot>()
                         .ge(req.getStartTimestamp() != 0, HotSpot::getCreateTime, LocalDateTime.ofInstant(Instant.ofEpochMilli(req.getStartTimestamp()), ZoneId.systemDefault()))
                         .le(req.getEndTimestamp() != 0, HotSpot::getCreateTime, LocalDateTime.ofInstant(Instant.ofEpochMilli(req.getEndTimestamp()), ZoneId.systemDefault()))
-                        .eq(req.getType() != 0, HotSpot::getPlatformId, req.getType()));
+                        .eq(req.getPlatform_id() != 0, HotSpot::getPlatformId, req.getPlatform_id()));
     }
 }
