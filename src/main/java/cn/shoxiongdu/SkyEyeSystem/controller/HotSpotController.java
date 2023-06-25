@@ -11,6 +11,8 @@ import cn.shoxiongdu.SkyEyeSystem.task.hotspot.statistics.WordCountRedis;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import redis.clients.jedis.Jedis;
@@ -64,6 +66,12 @@ public class HotSpotController {
     @Operation(summary = "查询热点")
     public Resp<Page<HotSpot>> listHotSpot(@RequestBody HotSpotListReq req) {
         return Resp.success(hotSpotService.listHotSpot(req));
+    }
+    
+    @GetMapping("/word-cloud/{platform_id}")
+    @Operation(summary = "词云图")
+    public void wordCloud(@PathVariable Long platform_id, HttpServletResponse resp) {
+        hotSpotService.wordCloud(platform_id, resp);
     }
 
 }

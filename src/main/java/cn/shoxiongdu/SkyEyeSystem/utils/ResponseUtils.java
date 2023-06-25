@@ -13,9 +13,8 @@ public class ResponseUtils {
 
     @SneakyThrows
     public static void writeFile(byte[] file, HttpServletResponse response, String fileName) {
-        response.setContentType("text/txt");
+//        response.setContentType("text/plain");
         response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
-        log.info("data.length " + file.length);
         response.setContentLength(file.length);
         response.setHeader("Content-Range", String.valueOf(Integer.valueOf(file.length - 1)));
         response.setHeader("Accept-Ranges", "bytes");
