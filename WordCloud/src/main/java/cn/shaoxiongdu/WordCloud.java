@@ -50,7 +50,7 @@ public class WordCloud {
         com.kennycason.kumo.WordCloud wordCloud = new com.kennycason.kumo.WordCloud(dimension, CollisionMode.PIXEL_PERFECT);
         //设置边界及字体
         wordCloud.setPadding(2);
-        java.awt.Font font = new java.awt.Font("STSong-Light", Font.ITALIC, 20);
+        java.awt.Font font = new java.awt.Font(null, Font.ITALIC, 10);
         //设置词云显示的三种颜色，越靠前设置表示词频越高的词语的颜色
         wordCloud.setColorPalette(new LinearGradientColorPalette(Color.RED, Color.BLUE, Color.GREEN, 30, 30));
         wordCloud.setKumoFont(new KumoFont(font));
