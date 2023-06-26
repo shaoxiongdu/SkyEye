@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>SkyEyeSystem</title>
+  
+  <link href="css/bootstrap.css" rel="stylesheet">
+
+</head>
+<body style="text-align: center;background-color: #f8f9fa">
+
+<div class="container text-center" style="width: 50%;margin: auto">
+  
+  <!--标题-->
+  <h1 class="mt-5">SkyEyeSystem</h1>
+  
+  <!--内容-->
+  <div class="mt-5" style="height: 80vh;background-color: #f2f2f2; padding: 20px">
+    
+    
+    <!--tab-->
+    <ul class="nav nav-tabs" id="myTabs" role="tablist">
+      <!-- 使用Thymeleaf循环遍历生成选项卡标题 -->
+      <li class="nav-item" role="presentation" th:each="itemVo: ${list}">
+        <button aria-selected="true"
+                class="nav-link"
+                data-bs-toggle="tab"
+                role="tab"
+                th:aria-controls="${itemVo.platform.name } + '-tab-pane'" th:data-bs-target="'#' + ${itemVo.platform.name } + '-tab-pane'"
+                th:id="${itemVo.platform.name} + '-tab'"
+                th:text="${itemVo.platform.name}"
+                type="button">
+          <img class="img-thumbnail" th:src="${itemVo.platform.iconUrl}">
+        </button>
+      </li>
+    </ul>
+    
+    <!--tab内容-->
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade"
+           role="tabpanel"
+           th:aria-labelledby="${itemVo.platform.name} + '-tab'"
+           th:each="itemVo : ${list}"
+           th:id="${itemVo.platform.name } + '-tab-pane'">
+        
+        <div class="ul">
+          <div class="li" style="margin-top: 50px" th:each="hotport: ${itemVo.hotSpotList}">
+            <a class="link-success" target="_blank" th:href="${hotport.url}" th:text="${hotport.keyword}"></a>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/bootstrap.js"></script>
+</body>
+</html>

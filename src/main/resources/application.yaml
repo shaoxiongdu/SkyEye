@@ -5,11 +5,15 @@ spring:
     active: HWCloud
   application:
     name: SkyEyeSystem
-#
+
+    # Thymeleaf
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+
 server:
-  port: 8080
-  servlet:
-    context-path: /api
+  port: 80
 cors:
   enable: true
 

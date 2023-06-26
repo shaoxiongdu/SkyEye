@@ -18,6 +18,8 @@ import java.io.File;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.Date;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -42,8 +44,16 @@ public class HotSpotServiceImpl extends ServiceImpl<HotSpotMapper, HotSpot> impl
     @Override
     public void wordCloud(Long platformId, HttpServletResponse resp) {
         Platform platform = platformMapper.selectById(platformId);
-        String wordCloudFilePath = System.getProperty("user.dir") + "/file-workspace/word-could/" + platform.getName() + ".png";
+        String wordCloudFilePath =
+                System.getProperty("user.dir") + "/file-workspace/word-could/" + platform.getName() + ".png";
         
         ResponseUtils.writeFile(new File(wordCloudFilePath), resp, platform.getId() + ".png");
+    }
+    
+    @Override
+    public List<HotSpot> findLastTenMinutesByPlatformId(Long platformId) {
+        
+        return hotSpotMapper.selectList(new LambdaQueryWrapper<HotSpot>().eq(HotSpot::getPlatformId, platformId)
+                .ge(HotSpot::getCreateTime, new Date(System.currentTimeMillis() - 10 * 60 * 1000)));
     }
 }

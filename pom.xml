@@ -14,7 +14,13 @@
     <name>SkyEyeSystem</name>
     <description>SkyEyeSystem</description>
     <dependencies>
-
+        
+        <!-- Thymeleaf -->
+        <dependency>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <groupId>org.springframework.boot</groupId>
+        </dependency>
+        
         <!--分词-->
         <dependency>
             <groupId>org.ansj</groupId>
