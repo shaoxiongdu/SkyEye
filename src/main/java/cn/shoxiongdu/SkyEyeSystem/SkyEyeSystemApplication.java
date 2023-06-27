@@ -27,8 +27,7 @@ public class SkyEyeSystemApplication {
 
             Integer port = serverProperties.getPort();
             port = Objects.isNull(port) ? 8080 : port;
-
-
+            
             String contextPath = serverProperties.getServlet().getContextPath();
             contextPath = Objects.isNull(contextPath) ? "" : contextPath;
 

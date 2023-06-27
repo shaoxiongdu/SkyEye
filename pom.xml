@@ -21,6 +21,12 @@
             <groupId>org.springframework.boot</groupId>
         </dependency>
         
+        <!-- 在 thymeleaf 标签中使用 Sa-Token -->
+        <dependency>
+            <artifactId>sa-token-dialect-thymeleaf</artifactId>
+            <groupId>cn.dev33</groupId>
+            <version>${saToken.version}</version>
+        </dependency>
         <!--分词-->
         <dependency>
             <groupId>org.ansj</groupId>
