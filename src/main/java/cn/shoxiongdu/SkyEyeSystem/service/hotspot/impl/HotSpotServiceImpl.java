@@ -18,7 +18,9 @@ import java.io.File;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -52,7 +54,10 @@ public class HotSpotServiceImpl extends ServiceImpl<HotSpotMapper, HotSpot> impl
     @Override
     public List<HotSpot> findLastTenByPlatformId(Long platformId) {
         
-        return page(new Page<>(1, 10), new LambdaQueryWrapper<HotSpot>().eq(HotSpot::getPlatformId, platformId)
-                .orderByDesc(HotSpot::getCreateTime)).getRecords();
+        List<HotSpot> hotSpotList = page(new Page<>(1, 15),
+                new LambdaQueryWrapper<HotSpot>().eq(HotSpot::getPlatformId, platformId)
+                        .orderByDesc(HotSpot::getCreateTime)).getRecords();
+        
+        return hotSpotList.stream().sorted(Comparator.comparingInt(HotSpot::getRank)).collect(Collectors.toList());
     }
 }

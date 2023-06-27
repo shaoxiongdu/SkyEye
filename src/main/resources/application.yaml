@@ -12,6 +12,10 @@ spring:
     suffix: .html
     cache: false
 
+  devtools:
+    restart:
+      enabled: true
+
 server:
   port: 80
 cors:

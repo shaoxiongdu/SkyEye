@@ -5,12 +5,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.context.ApplicationContext;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.util.Objects;
 
 @SpringBootApplication
 @MapperScan("cn.shoxiongdu.SkyEyeSystem.mapper")
-//@EnableScheduling
+@EnableScheduling
 public class SkyEyeSystemApplication {
 
         private static final String SWAGGER_URI = "swagger-ui/index.html";

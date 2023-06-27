@@ -7,21 +7,21 @@
   <link href="css/bootstrap.css" rel="stylesheet">
 
 </head>
-<body style="text-align: center;background-color: #f8f9fa;padding: 0;margin: 0">
+<body style="background-color: #f8f9fa;padding: 0;margin: 0">
 
 <div class="container text-center" style="width: 70%;margin: auto">
   
-  <div style="width: 80%;margin: auto; height: 90vh;padding: 30px;">
+  <div style="margin: auto; height: 90vh;padding: 30px;">
     
     <!--标题-->
-    <h1 class="mt-5" style="margin: 30px">MoYuHuaShui</h1>
+    <h1 class="mt-5" style="margin: 30px">MoYuHuaShui1</h1>
     
     <div style="text-align: right;margin-bottom: 20px">
       数据十分钟更新一次
     </div>
     
     <!--内容-->
-    <div style="background-color: #f2f2f2;height: 70vh;padding: 20px">
+    <div style="background-color: #f2f2f2;padding: 20px">
       <!--tab-->
       <ul class="nav nav-tabs" id="myTabs" role="tablist">
         <!-- 使用Thymeleaf循环遍历生成选项卡标题 -->
@@ -48,10 +48,31 @@
              th:each="itemVo : ${list}"
              th:id="${itemVo.platform.name } + '-tab-pane'">
           
+          <table class="table table-striped table-hove">
+            <thead>
+            <tr>
+              <th>热度</th>
+              <th>标题</th>
+              <th>更新时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="hotport: ${itemVo.hotSpotList}">
+              <td th:text="${hotport.hotValue}"></td>
+              <td>
+                <a class="link-error" style="text-decoration: none" target="_blank" th:href="${hotport.url}"
+                   th:text="${hotport.keyword}"></a>
+              </td>
+              
+              <td th:text="${#temporals.format(hotport.createTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+            
+            </tr>
+            </tbody>
+          </table>
+          
           <div class="ul">
             <div class="li" style="margin-top: 30px" th:each="hotport: ${itemVo.hotSpotList}">
-              <a class="link-error" style="text-decoration: none" target="_blank" th:href="${hotport.url}"
-                 th:text="${hotport.keyword}"></a>
+            
             </div>
           </div>
         </div>

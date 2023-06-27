@@ -23,12 +23,14 @@ public class IndexController {
     
     @GetMapping("/")
     public String home(Model model) {
+        
         List<Platform> platformList = platformService.list();
         
         List<IndexHotSpotItemVO> hotspotList = new ArrayList<>();
         platformList.forEach(platform -> {
             
             List<HotSpot> lastTenMinutesHotspot = hotSpotService.findLastTenByPlatformId(platform.getId());
+            
             if (!lastTenMinutesHotspot.isEmpty()) {
                 hotspotList.add(new IndexHotSpotItemVO(platform, lastTenMinutesHotspot));
             }
