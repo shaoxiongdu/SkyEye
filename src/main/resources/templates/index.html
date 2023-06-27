@@ -7,50 +7,62 @@
   <link href="css/bootstrap.css" rel="stylesheet">
 
 </head>
-<body style="text-align: center;background-color: #f8f9fa">
+<body style="text-align: center;background-color: #f8f9fa;padding: 0;margin: 0">
 
-<div class="container text-center" style="width: 50%;margin: auto">
+<div class="container text-center" style="width: 70%;margin: auto">
   
-  <!--标题-->
-  <h1 class="mt-5">SkyEyeSystem</h1>
-  
-  <!--内容-->
-  <div class="mt-5" style="height: 80vh;background-color: #f2f2f2; padding: 20px">
+  <div style="width: 80%;margin: auto; height: 90vh;padding: 30px;">
     
+    <!--标题-->
+    <h1 class="mt-5" style="margin: 30px">MoYuHuaShui</h1>
     
-    <!--tab-->
-    <ul class="nav nav-tabs" id="myTabs" role="tablist">
-      <!-- 使用Thymeleaf循环遍历生成选项卡标题 -->
-      <li class="nav-item" role="presentation" th:each="itemVo: ${list}">
-        <button aria-selected="true"
-                class="nav-link"
-                data-bs-toggle="tab"
-                role="tab"
-                th:aria-controls="${itemVo.platform.name } + '-tab-pane'" th:data-bs-target="'#' + ${itemVo.platform.name } + '-tab-pane'"
-                th:id="${itemVo.platform.name} + '-tab'"
-                th:text="${itemVo.platform.name}"
-                type="button">
-          <img class="img-thumbnail" th:src="${itemVo.platform.iconUrl}">
-        </button>
-      </li>
-    </ul>
+    <div style="text-align: right;margin-bottom: 20px">
+      数据十分钟更新一次
+    </div>
     
-    <!--tab内容-->
-    <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade"
-           role="tabpanel"
-           th:aria-labelledby="${itemVo.platform.name} + '-tab'"
-           th:each="itemVo : ${list}"
-           th:id="${itemVo.platform.name } + '-tab-pane'">
-        
-        <div class="ul">
-          <div class="li" style="margin-top: 50px" th:each="hotport: ${itemVo.hotSpotList}">
-            <a class="link-success" target="_blank" th:href="${hotport.url}" th:text="${hotport.keyword}"></a>
+    <!--内容-->
+    <div style="background-color: #f2f2f2;height: 70vh;padding: 20px">
+      <!--tab-->
+      <ul class="nav nav-tabs" id="myTabs" role="tablist">
+        <!-- 使用Thymeleaf循环遍历生成选项卡标题 -->
+        <li class="nav-item" role="presentation" th:each="itemVo: ${list}">
+          <button aria-selected="true"
+                  class="nav-link"
+                  data-bs-toggle="tab"
+                  role="tab"
+                  th:aria-controls="${itemVo.platform.name } + '-tab-pane'"
+                  th:data-bs-target="'#' + ${itemVo.platform.name } + '-tab-pane'"
+                  th:id="${itemVo.platform.name} + '-tab'"
+                  th:text="${itemVo.platform.name}"
+                  type="button">
+            <img class="img-thumbnail" th:src="${itemVo.platform.iconUrl}">
+          </button>
+        </li>
+      </ul>
+      
+      <!--tab内容-->
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade"
+             role="tabpanel"
+             th:aria-labelledby="${itemVo.platform.name} + '-tab'"
+             th:each="itemVo : ${list}"
+             th:id="${itemVo.platform.name } + '-tab-pane'">
+          
+          <div class="ul">
+            <div class="li" style="margin-top: 30px" th:each="hotport: ${itemVo.hotSpotList}">
+              <a class="link-error" style="text-decoration: none" target="_blank" th:href="${hotport.url}"
+                 th:text="${hotport.keyword}"></a>
+            </div>
           </div>
         </div>
-      
       </div>
     </div>
+    
+    
+    <div style="text-align: center">
+      <p style="color: #8590a6;font-size: 13px; line-height: 2;">MoYuHuaShui CopyRight 2023 © email@shaoxiongdu.cn</p>
+    </div>
+  
   </div>
 </div>
 

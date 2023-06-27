@@ -18,7 +18,6 @@ import java.io.File;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -51,9 +50,9 @@ public class HotSpotServiceImpl extends ServiceImpl<HotSpotMapper, HotSpot> impl
     }
     
     @Override
-    public List<HotSpot> findLastTenMinutesByPlatformId(Long platformId) {
+    public List<HotSpot> findLastTenByPlatformId(Long platformId) {
         
-        return hotSpotMapper.selectList(new LambdaQueryWrapper<HotSpot>().eq(HotSpot::getPlatformId, platformId)
-                .ge(HotSpot::getCreateTime, new Date(System.currentTimeMillis() - 10 * 60 * 1000)));
+        return page(new Page<>(1, 10), new LambdaQueryWrapper<HotSpot>().eq(HotSpot::getPlatformId, platformId)
+                .orderByDesc(HotSpot::getCreateTime)).getRecords();
     }
 }

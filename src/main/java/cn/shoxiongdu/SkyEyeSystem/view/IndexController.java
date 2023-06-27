@@ -28,7 +28,7 @@ public class IndexController {
         List<IndexHotSpotItemVO> hotspotList = new ArrayList<>();
         platformList.forEach(platform -> {
             
-            List<HotSpot> lastTenMinutesHotspot = hotSpotService.findLastTenMinutesByPlatformId(platform.getId());
+            List<HotSpot> lastTenMinutesHotspot = hotSpotService.findLastTenByPlatformId(platform.getId());
             if (!lastTenMinutesHotspot.isEmpty()) {
                 hotspotList.add(new IndexHotSpotItemVO(platform, lastTenMinutesHotspot));
             }

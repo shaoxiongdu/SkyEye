@@ -20,5 +20,5 @@ public interface HotSpotService extends IService<HotSpot> {
      * @param platformId 平台id
      * @return 热点列表
      */
-    List<HotSpot> findLastTenMinutesByPlatformId(Long platformId);
+    List<HotSpot> findLastTenByPlatformId(Long platformId);
 }
