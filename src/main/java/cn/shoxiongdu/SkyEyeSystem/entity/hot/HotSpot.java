@@ -2,7 +2,12 @@ package cn.shoxiongdu.SkyEyeSystem.entity.hot;
 
 import cn.shoxiongdu.SkyEyeSystem.entity.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
  * 热点类
@@ -12,6 +17,7 @@ import lombok.*;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class HotSpot extends BaseEntity {
 
     /**
