@@ -21,7 +21,7 @@
     </div>
     
     <!--内容-->
-    <div style="background-color: #f2f2f2;padding: 20px;height: 70vh">
+    <div style="background-color: #f2f2f2;padding: 20px;height: 80vh">
       <!--tab-->
       <ul class="nav nav-tabs" id="myTabs" role="tablist">
         <!-- 使用Thymeleaf循环遍历生成选项卡标题 -->
@@ -50,6 +50,11 @@
           
           <table class="table table-striped table-hove">
             <thead>
+            <tr>
+              <td colspan="3" style="color: #6f42c1">
+                <h3 style="color: #20c997" th:text="${itemVo.platform.slogan}"></h3>
+              </td>
+            </tr>
             <tr>
               <th>热度</th>
               <th>标题</th>
