@@ -3,7 +3,6 @@ package cn.shaoxiongdu;
 import cn.hutool.db.nosql.redis.RedisDS;
 import redis.clients.jedis.Jedis;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,13 +19,11 @@ public class WordCloudBuildTask {
         // 文件存放路径
         FILE_PATH = System.getProperty("user.dir") + "/file-workspace/word-could";
         
-        WORD_COUNT_REDIS_KEY_MAP.put("hotspot:statistics:wordCount:all","全平台");
-        WORD_COUNT_REDIS_KEY_MAP.put("hotspot:statistics:wordCount:platform:BiliBili","BiliBili");
-        WORD_COUNT_REDIS_KEY_MAP.put("hotspot:statistics:wordCount:platform:CSDN","CSDN");
-        WORD_COUNT_REDIS_KEY_MAP.put("hotspot:statistics:wordCount:platform:今日头条","今日头条");
-        WORD_COUNT_REDIS_KEY_MAP.put("hotspot:statistics:wordCount:platform:微博","微博");
-        WORD_COUNT_REDIS_KEY_MAP.put("hotspot:statistics:wordCount:platform:百度","百度");
-        WORD_COUNT_REDIS_KEY_MAP.put("hotspot:statistics:wordCount:platform:知乎","知乎");
+        // 词频统计的redisKey和文件名映射
+        JEDIS.keys("hotspot:statistics:wordCount*").forEach(key -> {
+            String[] split = key.split(":");
+            WORD_COUNT_REDIS_KEY_MAP.put(key, split[split.length - 1]);
+        });
     }
     
     public static void main(String[] args) {
