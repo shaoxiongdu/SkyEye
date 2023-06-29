@@ -59,16 +59,9 @@
                 <h4 class="text-success text-opacity-75 slogan" th:text="${hotSpotItemVO.platform.slogan}"></h4>
               </td>
             </tr>
-            <tr>
-              <th>排名</th>
-              <th>热度</th>
-              <th>标题</th>
-              <th>更新时间</th>
-            </tr>
             </thead>
             <tbody>
             <tr th:each="hotport: ${hotSpotItemVO.hotSpotList}">
-              <td th:text="${hotport.rank}"></td>
               <td th:text="${hotport.hotValue}"></td>
               <td>
                 <a class="link-primary" style="text-decoration: none" target="_blank" th:href="${hotport.url}"
