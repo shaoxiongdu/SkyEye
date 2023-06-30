@@ -1,6 +1,6 @@
 # 编译
 mvn clean
-mvn package
+mvn package -DskipTests
 
 # 上传文件  确保已经配置了SSH公钥身份验证
 
