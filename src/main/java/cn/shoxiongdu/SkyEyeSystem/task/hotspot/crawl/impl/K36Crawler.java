@@ -26,7 +26,7 @@ import java.util.List;
 @Slf4j
 public class K36Crawler implements HotDataCrawler {
     
-    public static final Long PLATFORM_ID = 11L;
+    public static final Long PLATFORM_ID = 12L;
     
     private static final String URL = "https://duomoyu.com/channels/36kr_24h";
     
