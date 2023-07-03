@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: jdbc:mysql://114.115.209.223:3306/sky_eye_system
-    username: remoteuser
-    password: password
+    username: sky_eye_system
+    password: sky_eye_system
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   data:
@@ -11,3 +11,4 @@ spring:
       host: 114.115.209.223
       port: 6379
       connect-timeout: 10s
+      password: dsx05117218...

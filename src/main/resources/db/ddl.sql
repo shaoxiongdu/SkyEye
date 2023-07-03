@@ -1,12 +1,12 @@
-CREATE DATABASE `sky_eye_system`;
-USE `sky_eye_system`;
+# CREATE DATABASE `sky_eye_system`;
+# USE `sky_eye_system`;
 
 CREATE TABLE base_entity
 (
-    id                BIGINT AUTO_INCREMENT COMMENT 'ID',
-    create_time       DATETIME COMMENT '创建时间',
-    update_time       DATETIME COMMENT '更新时间',
-    deleted           INT   DEFAULT 0 COMMENT '删除标记',
+    id          BIGINT AUTO_INCREMENT COMMENT 'ID',
+    create_time DATETIME COMMENT '创建时间',
+    update_time DATETIME COMMENT '更新时间',
+    deleted     INT DEFAULT 0 COMMENT '删除标记',
     PRIMARY KEY (id)
 ) COMMENT ='模板';
 
@@ -15,7 +15,7 @@ CREATE TABLE user
     id                BIGINT AUTO_INCREMENT COMMENT '用户ID',
     create_time       DATETIME COMMENT '创建时间',
     update_time       DATETIME COMMENT '更新时间',
-    deleted           INT   DEFAULT 0 COMMENT '删除标记',
+    deleted           INT          DEFAULT 0 COMMENT '删除标记',
     username          VARCHAR(255) COMMENT '用户名',
     password          VARCHAR(255) COMMENT '密码',
     email             VARCHAR(255) COMMENT '电子邮件',
@@ -82,18 +82,30 @@ CREATE TABLE user_roles
 
 CREATE TABLE hot_platform
 (
-    id                BIGINT AUTO_INCREMENT COMMENT 'ID',
-    name VARCHAR(255) NOT NULL COMMENT '平台名称',
-    icon_url VARCHAR(255) NOT NULL COMMENT '图标',
-    description TEXT NOT NULL COMMENT '平台描述',
-    website VARCHAR(255) NOT NULL COMMENT '官网',
-    slogan VARCHAR(255) NOT NULL COMMENT '口号',
-    founder VARCHAR(255) NOT NULL COMMENT '创始人',
-    create_time       DATETIME COMMENT '创建时间',
-    update_time       DATETIME COMMENT '更新时间',
-    deleted           INT   DEFAULT 0 COMMENT '删除标记',
+    id          BIGINT AUTO_INCREMENT COMMENT 'ID',
+    name        VARCHAR(255) NOT NULL COMMENT '平台名称',
+    icon_url    VARCHAR(255) NOT NULL COMMENT '图标',
+    description TEXT         NOT NULL COMMENT '平台描述',
+    website     VARCHAR(255) NOT NULL COMMENT '官网',
+    slogan      VARCHAR(255) NOT NULL COMMENT '口号',
+    founder     VARCHAR(255) NOT NULL COMMENT '创始人',
+    create_time DATETIME COMMENT '创建时间',
+    update_time DATETIME COMMENT '更新时间',
+    deleted     INT DEFAULT 0 COMMENT '删除标记',
     PRIMARY KEY (id)
 ) COMMENT ='平台表';
+
+INSERT INTO hot_platform(id, name, icon_url, description, website, slogan, founder)
+values (4, '百度', '', '', '', '', ''),
+       (5, 'CSDN', '', '', '', '', ''),
+       (6, '头条', '', '', '', '', ''),
+       (2, '微博', '', '', '', '', ''),
+       (3, '知乎', '', '', '', '', ''),
+       (7, '哔哩哔哩', '', '', '', '', ''),
+       (10, '掘金', '', '', '', '', ''),
+       (12, '36氪', '', '', '', '', ''),
+       (11, '腾讯新闻', '', '', '', '', ''),
+       (9, '少数派', '', '', '', '', '');
 
 CREATE TABLE hot_spot
 (
@@ -101,7 +113,7 @@ CREATE TABLE hot_spot
     platform_id BIGINT       NOT NULL COMMENT '平台id',
     `rank`      INT          NOT NULL COMMENT '排序',
     keyword     VARCHAR(255) NOT NULL COMMENT '关键字',
-    url         TEXT NOT NULL COMMENT '链接',
+    url         TEXT         NOT NULL COMMENT '链接',
     image       VARCHAR(255) NOT NULL COMMENT '封面',
     hot_value   INT          NOT NULL COMMENT '热度',
     create_time DATETIME COMMENT '创建时间',
@@ -109,3 +121,4 @@ CREATE TABLE hot_spot
     deleted     INT DEFAULT 0 COMMENT '删除标记',
     PRIMARY KEY (id)
 ) COMMENT ='热点表';
+
