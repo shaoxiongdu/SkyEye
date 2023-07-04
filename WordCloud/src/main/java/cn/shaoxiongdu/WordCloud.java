@@ -70,6 +70,7 @@ public class WordCloud {
         }
 
         wordCloud.writeToFile(filePath + "/" + fileName);
+        System.out.println("生成文件: " + filePath + "/" + fileName);
         return true;
     }
 }
