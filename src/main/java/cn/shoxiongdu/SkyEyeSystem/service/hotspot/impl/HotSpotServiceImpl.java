@@ -56,7 +56,7 @@ public class HotSpotServiceImpl extends ServiceImpl<HotSpotMapper, HotSpot> impl
     }
 
     @Override
-    public List<HotSpot> findLastTenByPlatformId(Long platformId) {
+    public List<HotSpot> findLast15ByPlatformId(Long platformId) {
 
         List<HotSpot> hotSpotList = page(new Page<>(1, 15),
                 new LambdaQueryWrapper<HotSpot>().eq(HotSpot::getPlatformId, platformId)
@@ -72,7 +72,7 @@ public class HotSpotServiceImpl extends ServiceImpl<HotSpotMapper, HotSpot> impl
 
         platformMapper.selectList(null).forEach(platform -> {
 
-            List<HotSpot> lastTenMinutesHotspot = findLastTenByPlatformId(platform.getId());
+            List<HotSpot> lastTenMinutesHotspot = findLast15ByPlatformId(platform.getId());
 
             if (!lastTenMinutesHotspot.isEmpty()) {
 

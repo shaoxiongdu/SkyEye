@@ -21,7 +21,7 @@ public interface HotSpotService extends IService<HotSpot> {
      * @param platformId 平台id
      * @return 热点列表
      */
-    List<HotSpot> findLastTenByPlatformId(Long platformId);
+    List<HotSpot> findLast15ByPlatformId(Long platformId);
 
     /**
      * 给首页返回的列表数据
