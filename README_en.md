@@ -87,11 +87,11 @@ contribution.
 
 1. Fork project
 
-2.Create feature branches ('git checkout-b Feature/AamazingFeature')
+2.Create feature branches ('git checkout-b Feature/master')
 
 3. Commit the changes ('git-commit-m' to add some AmazingFeatures')
 
-4. Push to branch ('git Push origin feature/AamazingFeature')
+4. Push to branch ('git Push origin feature/master')
 
 5. Open a pull request
 

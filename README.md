@@ -83,11 +83,11 @@ public void crawl(){
 
 1.fork项目
 
-2.创建功能分支（`git checkout-b Feature/AamazingFeature`）
+2.创建功能分支（`git checkout-b Feature/master`）
 
 3.提交更改（`git-Commit-m'添加一些AmazingFeature`）
 
-4.推送至分支（`git Push origin feature/AamazingFeature`）
+4.推送至分支（`git Push origin feature/master`）
 
 5.打开拉取请求
 
