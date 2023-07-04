@@ -1,4 +1,4 @@
-host=114.115.209.223
+host=192.168.31.40
 port=6379
 database=3
-password=dsx05117218...
+password=dsx05117218

@@ -7,18 +7,14 @@ import cn.shoxiongdu.SkyEyeSystem.request.hotspot.HotSpotListReq;
 import cn.shoxiongdu.SkyEyeSystem.response.base.Resp;
 import cn.shoxiongdu.SkyEyeSystem.service.hotspot.HotSpotService;
 import cn.shoxiongdu.SkyEyeSystem.service.hotspot.PlatformService;
+import cn.shoxiongdu.SkyEyeSystem.task.hotspot.crawl.CrawlerTask;
 import cn.shoxiongdu.SkyEyeSystem.task.hotspot.statistics.WordCountRedis;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import redis.clients.jedis.Jedis;
 
 import java.util.HashMap;
@@ -34,12 +30,23 @@ public class HotSpotController {
     PlatformService platformService;
     @Autowired
     HotSpotService hotSpotService;
+    @Autowired
+    CrawlerTask crawlerTask;
     Jedis jedis = RedisDS.create().getJedis();
 
     @PostMapping("/platform")
     @Operation(summary = "添加平台")
     public Resp<Boolean> addPlatform(@RequestBody Platform platform) {
         return Resp.success(platformService.save(platform));
+    }
+
+    @PostMapping("/crawler")
+    @Operation(summary = "手动爬虫")
+    public Resp<String> crawler() {
+        new Thread(() -> {
+            crawlerTask.crawl();
+        }).start();
+        return Resp.success("成功启动爬虫脚本");
     }
 
     @GetMapping("/platform")
@@ -71,7 +78,7 @@ public class HotSpotController {
     public Resp<Page<HotSpot>> listHotSpot(@RequestBody HotSpotListReq req) {
         return Resp.success(hotSpotService.listHotSpot(req));
     }
-    
+
     @GetMapping("/word-cloud/{platform_id}")
     @Operation(summary = "词云图")
     public void wordCloud(@PathVariable Long platform_id, HttpServletResponse resp) {
