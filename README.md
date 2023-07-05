@@ -29,7 +29,7 @@
 
 ## 关于项目
 
-![image-20230705153136577](https://images-1301128659.cos.ap-beijing.myqcloud.com/shaoxiongdu/202307051531026.png)
+![image-20230705153710250](https://images-1301128659.cos.ap-beijing.myqcloud.com/shaoxiongdu/202307051537338.png)
 
 每天下午三点定时爬取全网热搜数据。包括
 
@@ -106,7 +106,6 @@ public class CrawlerTask {
            0);
    ```
 
-   
 2. 在 [src/main/java/cn/shoxiongdu/SkyEyeSystem/task/hotspot/crawl/impl]
    下新增对应的平台类，并实现接口 [HotDataCrawler](src/main/java/cn/shoxiongdu/SkyEyeSystem/task/hotspot/crawl/HotDataCrawler.java)
 
