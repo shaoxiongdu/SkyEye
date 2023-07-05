@@ -49,18 +49,22 @@ public class CrawlerTask {
 
             // 处理数据
             hotSpots.forEach(hotSpot -> {
-
+                
                 // 设置平台id
                 hotSpot.setPlatformId(platform.getId());
-
+                
                 // 删除旧数据
                 hotSpotMapper.deleteByKeyword(hotSpot.getKeyword());
-
+                
                 // 插入
                 hotSpotMapper.insert(hotSpot);
-
+                
                 // 词频统计
-                wordCountRedis.wordFrequency(hotSpot.getKeyword(), hotSpot.getPlatformId());
+                try {
+                    wordCountRedis.wordFrequency(hotSpot.getKeyword(), hotSpot.getPlatformId());
+                } catch (Throwable t) {
+                    //                    log.error(t.getMessage());
+                }
             });
         });
         log.info("爬取热点数据完成");
